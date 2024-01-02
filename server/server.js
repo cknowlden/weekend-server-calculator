@@ -26,7 +26,8 @@ app.post('/calculations', (req, res) => {
   let currentRound = req.body;
   console.log('current round on server side', currentRound);
   console.log('POST current round numOne value', currentRound.numOne);
-  doMath();
+  result = (currentRound.numOne+currentRound.numTwo);
+  console.log('result is', result);
   calculations.push(currentRound);
   console.log('in POST updated calculations', calculations);
   res.sendStatus(201);
@@ -54,25 +55,24 @@ app.post('/calculations', (req, res) => {
 //   res.sendStatus(201);
 // });
 
-function doMath (mathList){
-  console.log('in doMath and current calculations list is', calculations);
-  console.log('numOne', calculations.numOne);
-  result = (calculations.numOne + calculations.numTwo);
-  //const newData = [];
-  // for (let inputs of mathList){  
-  //   if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
-  //     else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
-  //     else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
-  //     else if (calculations.operator === '/'){calculations.result = calculations.numOne/calculations.numTwo}
-  //     //else {guesses.result = 'Too low'}
-  //     newData.push(calculations.result);
-  // }
-  console.log('result', result);
-};
+// function doMath (mathList){
+//   console.log('in doMath and current calculations list is', calculations);
+//   console.log('numOne', calculations.numOne);
+//   result = (calculations.numOne + calculations.numTwo);
+//   //const newData = [];
+//   // for (let inputs of mathList){  
+//   //   if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
+//   //     else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
+//   //     else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
+//   //     else if (calculations.operator === '/'){calculations.result = calculations.numOne/calculations.numTwo}
+//   //     //else {guesses.result = 'Too low'}
+//   //     newData.push(calculations.result);
+//   // }
+//   console.log('result', result);
+// };
 
 app.get('/calculations', function(req, res){
   console.log('in GET on server');
-  //doMath();
   res.send(calculations);
 });
 
