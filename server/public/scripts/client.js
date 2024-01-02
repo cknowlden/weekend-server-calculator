@@ -2,12 +2,12 @@ const firstNum = document.querySelector('#firstNum');
 const secondNum = document.querySelector('#secondNum');
 
 
-// function onReady() {
-//     console.log('client.js is sourced!');
-//     getCalculations();
-// };
+function onReady() {
+    console.log('client.js is sourced!');
+    getCalculations();
+};
 
-//onReady();
+onReady();
 
 function Calc(event){
     event.preventDefault();
@@ -56,7 +56,8 @@ function getCalculations() {
 
 function renderHistory(calculations) {
     console.log('rendering calculations history to the DOM', calculations);
-    let resultHistory = document.getElementById('result-history');
+    //let resultHistory = document.getElementById('result-history');
+    let resultHistory = document.querySelector('#result-history');
     resultHistory.innerHTML = '';
 
     // loop through the results to display them
