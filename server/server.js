@@ -12,14 +12,15 @@ let result;
 
 //MOVED TO SEPARATE MODULE
 //const calculatorRouter = require('./routes/calculator-router');
-let calculations = [
+let calculations = require('./data/calculations-data');
+//[
   // {
   //     numOne: 10,
   //     numTwo: 20,
   //     operator: '+',
   //     result: 30,
   // },
-];
+//];
 
 // Here's a wonderful place to make some routes:
 
