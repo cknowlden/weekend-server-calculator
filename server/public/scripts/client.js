@@ -1,6 +1,6 @@
 const firstNum = document.querySelector('#firstNum');
 const secondNum = document.querySelector('#secondNum');
-let resultHistory = document.querySelector('#resultHistory');
+
 
 // function onReady() {
 //     console.log('client.js is sourced!');
@@ -56,18 +56,12 @@ function getCalculations() {
 
 function renderHistory(calculations) {
     console.log('rendering calculations history to the DOM', calculations);
-  
+    let resultHistory = document.getElementById('result-history');
+    resultHistory.innerHTML = 'TEST';
 
-  
-    // empty 
-    // resultHistory.innerHTML = '';
-  
-    // loop through the results to display them
-    for (let item of calculations) {
-      // Append the item to the DOM
-      resultHistory.innerHTML += `
-            <li>
-              <p>${item.numOne} ${item.operator} ${item.numTwo} = ${item.result}</p>
-            </li>`;
-    }
-  };
+//     // loop through the results to display them
+//     for (let item of calculations) {
+//       // Append the item to the DOM
+//       resultHistory.innerHTML += 'potato'
+//     }
+};
