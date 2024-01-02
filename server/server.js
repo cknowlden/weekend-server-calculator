@@ -9,6 +9,7 @@ app.use(express.static('server/public'));
 // calculation objects:  
 let result;
 
+
 //MOVED TO SEPARATE MODULE
 //const calculatorRouter = require('./routes/calculator-router');
 let calculations = [
@@ -29,32 +30,14 @@ app.post('/calculations', (req, res) => {
   //result = (currentRound.numOne+currentRound.numTwo);
   //console.log('result is', result);
   doMath(currentRound);
-  calculations.push(currentRound);
-  console.log('in POST updated calculations', calculations);
+  //calculations.push(currentRound);
+  //console.log('in POST updated calculations', calculations);
+  console.log('result from calculations is', result);
+  currentRound.result = result;
+  calculations.push({numOne: currentRound.numOne, numTwo: currentRound.numTwo, operator: currentRound.operator, result: currentRound.result});
+  console.log('updated calculations list is', calculations);
   res.sendStatus(201);
 });
-
-// app.post('/calculations', (req, res) => {
-//   let currentRound = req.body;
-//   console.log('current round on server side', currentRound);
-//   calculations.push(currentRound);
-//   console.log('current round number one', currentRound.numTwo);
-//   // let currentOne = Number(currentRound.numOne)
-//   // let currentTwo = Number(currentRound.numTwo)
-//   //result = 2 + 7;
-//   //result = currentOne+currentTwo;
-//   // for (let inputs of currentRound){  
-//     // if (currentRound.operator == '+'){currentRound.result = currentRound.numOne+currentRound.numTwo}
-//     //   else if (currentRound.operator == '-'){result = currentRound.numOne-currentRound.numTwo}
-//     //   else if (currentRound.operator == '*'){result = currentRound.numOne*currentRound.numTwo}
-//     //   else {result = currentRound.numOne%currentRound.numTwo}
-//       //console.log('result is', result);
-//     //}
-//     console.log('result is', result);
-//   calculations.result = result;
-//   calculations.push(calculations.result);
-//   res.sendStatus(201);
-// });
 
 function doMath (mathList){
   console.log('in doMath');
@@ -63,7 +46,7 @@ function doMath (mathList){
   else if (mathList.operator == '-'){result = (mathList.numOne-mathList.numTwo)}
   else if (mathList.operator == '*'){result = (mathList.numOne*mathList.numTwo)}
   else {result = (mathList.numOne%mathList.numTwo)}
-console.log('result is', result);
+//console.log('result is', result);
   };
 
 app.get('/calculations', function(req, res){
