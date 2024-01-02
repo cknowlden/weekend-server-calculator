@@ -23,6 +23,11 @@ app.get('/calculations', function(req, res){
   res.send(calculations);
 });
 
+app.post('/calculations', (req, res) => {
+  const newCalc = req.body;
+  calculations.push(newCalc);
+res.sendStatus(201);
+});
 //Express routes
 //app.use('/calculations', calculatorRouter);
 
