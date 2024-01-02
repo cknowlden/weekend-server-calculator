@@ -6,10 +6,10 @@ app.use(express.json());
 app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
-// calculation objects:
+// calculation objects:  MOVED TO SEPARATE MODULE
 
-let calculations = [{}];
-const router = express.Router();
+const calculatorRouter = require('./routes/calculator-router');
+
 
 // Here's a wonderful place to make some routes:
 
