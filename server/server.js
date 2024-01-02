@@ -25,9 +25,10 @@ let calculations = [
 app.post('/calculations', (req, res) => {
   let currentRound = req.body;
   console.log('current round on server side', currentRound);
-  console.log('POST current round numOne value', currentRound.numOne);
-  result = (currentRound.numOne+currentRound.numTwo);
-  console.log('result is', result);
+  //console.log('POST current round numOne value', currentRound.numOne);
+  //result = (currentRound.numOne+currentRound.numTwo);
+  //console.log('result is', result);
+  doMath(currentRound);
   calculations.push(currentRound);
   console.log('in POST updated calculations', calculations);
   res.sendStatus(201);
@@ -55,21 +56,15 @@ app.post('/calculations', (req, res) => {
 //   res.sendStatus(201);
 // });
 
-// function doMath (mathList){
-//   console.log('in doMath and current calculations list is', calculations);
-//   console.log('numOne', calculations.numOne);
-//   result = (calculations.numOne + calculations.numTwo);
-//   //const newData = [];
-//   // for (let inputs of mathList){  
-//   //   if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
-//   //     else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
-//   //     else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
-//   //     else if (calculations.operator === '/'){calculations.result = calculations.numOne/calculations.numTwo}
-//   //     //else {guesses.result = 'Too low'}
-//   //     newData.push(calculations.result);
-//   // }
-//   console.log('result', result);
-// };
+function doMath (mathList){
+  console.log('in doMath');
+  //result = (mathList.numOne+mathList.numTwo)
+  if (mathList.operator == '+'){result = (mathList.numOne+mathList.numTwo)}
+  else if (mathList.operator == '-'){result = (mathList.numOne-mathList.numTwo)}
+  else if (mathList.operator == '*'){result = (mathList.numOne*mathList.numTwo)}
+  else {result = (mathList.numOne%mathList.numTwo)}
+console.log('result is', result);
+  };
 
 app.get('/calculations', function(req, res){
   console.log('in GET on server');
