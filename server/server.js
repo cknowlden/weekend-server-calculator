@@ -51,6 +51,7 @@ function doMath (mathList){
 
 app.get('/calculations', function(req, res){
   console.log('in GET on server');
+  console.log('calculations', calculations);
   res.send(calculations);
 });
 
