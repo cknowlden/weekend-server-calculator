@@ -1,6 +1,6 @@
 const firstNum = document.querySelector('#firstNum');
 const secondNum = document.querySelector('#secondNum');
-
+let resultCurrent = document.getElementById('recent-result');
 
 function onReady() {
     console.log('client.js is sourced!');
@@ -72,7 +72,7 @@ function renderHistory(calculations) {
 
 function renderRecent(calculations) {
   console.log('rendering recent calculation', Number(calculations.result));
-  let resultCurrent = document.getElementById('recent-result');
+ 
   resultCurrent.innerHTML = '';
 
   // loop through the results to display them
@@ -83,3 +83,11 @@ function renderRecent(calculations) {
     `
   }
 };
+
+function clear(event){
+  event.preventDefault();
+  console.log('in clear event');
+  //resultCurrent.innerHTML = '';
+  document.getElementById("result-history").innerHTML = '';
+};
+
