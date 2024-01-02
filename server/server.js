@@ -34,7 +34,7 @@ app.post('/calculations', (req, res) => {
   //console.log('in POST updated calculations', calculations);
   console.log('result from calculations is', result);
   currentRound.result = result;
-  calculations.push({numOne: currentRound.numOne, numTwo: currentRound.numTwo, operator: currentRound.operator, result: currentRound.result});
+  calculations.push({numOne: Number(currentRound.numOne), numTwo: Number(currentRound.numTwo), operator: currentRound.operator, result: Number(currentRound.result)});
   console.log('updated calculations list is', calculations);
   res.sendStatus(201);
 });

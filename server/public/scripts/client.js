@@ -47,6 +47,7 @@ function getCalculations() {
     })
       .then(function (response) {
         renderHistory(response.data);
+        renderRecent(response.data);
       })
       .catch(function (error) {
         console.log('Error getting calculations', error);
@@ -67,4 +68,18 @@ function renderHistory(calculations) {
       <p>${item.numOne} ${item.operator} ${item.numTwo} = ${item.result} </p>
       `
     }
+};
+
+function renderRecent(calculations) {
+  console.log('rendering recent calculation', Number(calculations.result));
+  let resultCurrent = document.getElementById('recent-result');
+  resultCurrent.innerHTML = '';
+
+  // loop through the results to display them
+  for (let item of calculations) {
+    // Append the item to the DOM
+    resultCurrent.innerHTML =  `
+    <p>${item.result} </p>
+    `
+  }
 };
