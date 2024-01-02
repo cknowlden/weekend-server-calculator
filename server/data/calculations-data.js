@@ -1,4 +1,4 @@
-let CALCULATIONS = [
+let calculations = [
     {
         numOne: 1,
         numTwo: 2,
@@ -6,4 +6,4 @@ let CALCULATIONS = [
     },
 ];
 
-module.exports = CALCULATIONS;
+module.exports = calculations;

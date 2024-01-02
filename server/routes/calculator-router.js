@@ -1,10 +1,10 @@
 const express = require('express');
-let CALCULATIONS = require('../data/calculations-data');
+let calculations = require('../data/calculations-data');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send(CALCULATIONS);
+    res.send(calculations);
 });
 
 // router.post('/', (req, res) => {
