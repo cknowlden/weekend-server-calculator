@@ -40,9 +40,9 @@ app.post('/calculations', (req, res) => {
   res.sendStatus(201);
 });
 
-function checkMath (calculations){
+function checkMath (mathList){
   const newData = [];
-  for (let operators of calculations){  
+  for (let inputs of mathList){  
     if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
       else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
       else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
@@ -50,6 +50,7 @@ function checkMath (calculations){
       //else {guesses.result = 'Too low'}
       newData.push(calculations.result);
   }
+  console.log('new data', newData);
 };
 //Express routes
 //app.use('/calculations', calculatorRouter);
