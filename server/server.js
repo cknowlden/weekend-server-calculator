@@ -6,15 +6,24 @@ app.use(express.json());
 app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
-// calculation objects:  MOVED TO SEPARATE MODULE
+// calculation objects:  
 
-const calculatorRouter = require('./routes/calculator-router');
-
+//MOVED TO SEPARATE MODULE
+//const calculatorRouter = require('./routes/calculator-router');
+let calculations = [
+  {
+      numOne: 10,
+      numTwo: 20,
+      operator: '+',
+  },
+];
 
 // Here's a wonderful place to make some routes:
-
+app.get('/calculations', function(req, res){
+  res.send(calculations);
+});
 //Express routes
-app.use('/calculations', calculatorRouter);
+//app.use('/calculations', calculatorRouter);
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
