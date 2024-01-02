@@ -7,7 +7,7 @@ app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:  
-let newCalc;
+let result;
 
 //MOVED TO SEPARATE MODULE
 //const calculatorRouter = require('./routes/calculator-router');
@@ -21,9 +21,49 @@ let calculations = [
 ];
 
 // Here's a wonderful place to make some routes:
+
+// app.post('/calculations', (req, res) => {
+//   currentRound = req.body;
+//   console.log('current round on server side', currentRound);
+//   calculations.push(currentRound);
+//   res.sendStatus(201);
+// });
+
+app.post('/calculations', (req, res) => {
+  currentRound = req.body;
+  console.log('current round on server side', currentRound);
+  calculations.push(currentRound);
+  console.log('updated calculations', calculations);
+  //result = 1+2;
+  for (let inputs of currentRound){  
+    if (currentRound.operator == '+'){currentRound.result = currentRound.numOne+currentRound.numTwo}
+      else if (currentRound.operator == '-'){result = currentRound.numOne-currentRound.numTwo}
+      else if (currentRound.operator == '*'){result = currentRound.numOne*currentRound.numTwo}
+      else {result = currentRound.numOne%currentRound.numTwo}
+      console.log('result is', result);
+    }
+    console.log('result is', result);
+  calculations.result = result;
+  calculations.push(calculations.result);
+  res.sendStatus(201);
+});
+
+// function checkMath (mathList){
+//   const newData = [];
+//   for (let inputs of mathList){  
+//     if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
+//       else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
+//       else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
+//       else if (calculations.operator === '/'){calculations.result = calculations.numOne/calculations.numTwo}
+//       //else {guesses.result = 'Too low'}
+//       newData.push(calculations.result);
+//   }
+//   console.log('new data', newData);
+// };
+
 app.get('/calculations', function(req, res){
   console.log('in GET on server');
-  checkMath();
+  //checkMath();
   res.send(calculations);
 });
 
@@ -33,25 +73,7 @@ app.get('/calculations', function(req, res){
 //   res.sendStatus(201);
 //   console.log('new calcuation list', calculations);
 // });
-app.post('/calculations', (req, res) => {
-  currentRound = req.body;
-  console.log('current round on server side', currentRound);
-  calculations.push(currentRound);
-  res.sendStatus(201);
-});
 
-function checkMath (mathList){
-  const newData = [];
-  for (let inputs of mathList){  
-    if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
-      else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
-      else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
-      else if (calculations.operator === '/'){calculations.result = calculations.numOne/calculations.numTwo}
-      //else {guesses.result = 'Too low'}
-      newData.push(calculations.result);
-  }
-  console.log('new data', newData);
-};
 //Express routes
 //app.use('/calculations', calculatorRouter);
 
