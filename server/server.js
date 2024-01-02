@@ -25,6 +25,7 @@ let calculations = [
 app.post('/calculations', (req, res) => {
   let currentRound = req.body;
   console.log('current round on server side', currentRound);
+  console.log('POST current round numOne value', currentRound.numOne);
   doMath();
   calculations.push(currentRound);
   console.log('in POST updated calculations', calculations);
