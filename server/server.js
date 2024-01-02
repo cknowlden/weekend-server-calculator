@@ -22,6 +22,7 @@ let calculations = [
 app.get('/calculations', function(req, res){
   res.send(calculations);
 });
+
 //Express routes
 //app.use('/calculations', calculatorRouter);
 
