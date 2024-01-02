@@ -1,34 +1,19 @@
 const firstNum = document.querySelector('#firstNum');
 const secondNum = document.querySelector('#secondNum');
 
-// console.log('client.js is sourced!');
-// function onReady() {
-//     console.log('client.js is sourced!');
-//     getCalcHistory();
-// };
+function onReady() {
+    console.log('client.js is sourced!');
+//    getCalculations();
+};
 
-// onReady();
+onReady();
 
 function Calc(event){
     event.preventDefault();
     console.log('in handle submit');
     postToServer();
-    //updateHistory();
+    renderCurrentCalc();
 };
-// function getCalcHistory() {
-//     console.log('Getting calculations history...');
-//     axios({
-//       method: 'GET',
-//       url: '/calculations',
-//     })
-//       .then(function (response) {
-//         renderHistory(response.data);
-//       })
-//       .catch(function (error) {
-//         console.log('Error getting calculations history', error);
-//         alert('Sorry. Something bad happened. Try again later.');
-//       });
-// };
 
 //post inputs to server
 function postToServer(){
@@ -52,20 +37,8 @@ function postToServer(){
     });    
     };
 
-// function renderHistory(calculations) {
-//     console.log('rendering inventory to the DOM');
-  
-//     let resultHistory = document.getElementById('resultHistory');
-  
-//     // empty the output element
-//     resultHistory.innerHTML = '';
-  
-//     // loop through the calculations to display them
-//     for (let item of calculations) {
-//       // Append the item to the DOM
-//       resultHistory.innerHTML += `
-//             <li>
-//               <p>${calculations.numOne} ${calculations.operator} ${calculations.numOne} = ${calculations.result}</p>
-//             </li>`;
-//     }
-//   };
+function renderCurrentCalc() {
+    console.log('rendering current calculation to the DOM');
+
+};
+
