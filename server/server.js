@@ -13,13 +13,8 @@ const calculatorRouter = require('./routes/calculator-router');
 
 // Here's a wonderful place to make some routes:
 
-// GET /calculations
-router.get('/', (req, res) => {
-    res.send(calculations);
-});
-
-// POST /calculations
-
+//Express routes
+app.use('/calculations', calculatorRouter);
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
