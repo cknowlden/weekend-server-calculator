@@ -15,6 +15,7 @@ let calculations = [
       numOne: 10,
       numTwo: 20,
       operator: '+',
+      result: 30,
   },
 ];
 
