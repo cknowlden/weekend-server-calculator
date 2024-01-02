@@ -57,11 +57,13 @@ function getCalculations() {
 function renderHistory(calculations) {
     console.log('rendering calculations history to the DOM', calculations);
     let resultHistory = document.getElementById('result-history');
-    resultHistory.innerHTML = 'TEST';
+    resultHistory.innerHTML = '';
 
-//     // loop through the results to display them
-//     for (let item of calculations) {
-//       // Append the item to the DOM
-//       resultHistory.innerHTML += 'potato'
-//     }
+    // loop through the results to display them
+    for (let item of calculations) {
+      // Append the item to the DOM
+      resultHistory.innerHTML +=  `
+      <p>${item.numOne} ${item.operator} ${item.numTwo} = ${item.result} </p>
+      `
+    }
 };
