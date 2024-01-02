@@ -7,28 +7,50 @@ app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:  
+let newCalc;
 
 //MOVED TO SEPARATE MODULE
 //const calculatorRouter = require('./routes/calculator-router');
 let calculations = [
-  {
-      numOne: 10,
-      numTwo: 20,
-      operator: '+',
-      result: 30,
-  },
+  // {
+  //     numOne: 10,
+  //     numTwo: 20,
+  //     operator: '+',
+  //     result: 30,
+  // },
 ];
 
 // Here's a wonderful place to make some routes:
 app.get('/calculations', function(req, res){
+  console.log('in GET on server');
+  checkMath();
   res.send(calculations);
 });
 
+// app.post('/calculations', (req, res) => {
+//   console.log('in POST');
+//   calculations.push(newCalc);
+//   res.sendStatus(201);
+//   console.log('new calcuation list', calculations);
+// });
 app.post('/calculations', (req, res) => {
-  const newCalc = req.body;
-  calculations.push(newCalc);
-res.sendStatus(201);
+  currentRound = req.body;
+  console.log('current round on server side', currentRound);
+  calculations.push(currentRound);
+  res.sendStatus(201);
 });
+
+function checkMath (calculations){
+  const newData = [];
+  for (let operators of calculations){  
+    if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
+      else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
+      else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
+      else if (calculations.operator === '/'){calculations.result = calculations.numOne/calculations.numTwo}
+      //else {guesses.result = 'Too low'}
+      newData.push(calculations.result);
+  }
+};
 //Express routes
 //app.use('/calculations', calculatorRouter);
 
