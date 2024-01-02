@@ -1,4 +1,5 @@
-const louGuess = document.querySelector('#louisGuess');
+const firstNum = document.querySelector('#firstNum');
+const secondNum = document.querySelector('#secondNum');
 
 // console.log('client.js is sourced!');
 // function onReady() {
@@ -33,27 +34,38 @@ function Calc(event){
 function postToServer(){
     console.log('in post to server');
     const currentRound = 
-        [{
-            numOne: louGuess.name,
-            numTwo: Number(louGuess.value),
-        },
-        ];
+        {
+            numOne: Number(firstNum.value),
+            numTwo: Number(secondNum.value),
+            operator: '+'
+        }
+        ;
+        console.log('current round', currentRound);
+        console.log('numOne', currentRound.numOne);
+        let answer = (currentRound.numOne + currentRound.numTwo);
+        console.log('test addition', answer);
+    axios
+        .post('/calculations', currentRound)
+        .then((response) => {
+            firstNum.value = '';
+            secondNum.value = '';
+    });    
     };
 
-function renderHistory(calculations) {
-    console.log('rendering inventory to the DOM');
+// function renderHistory(calculations) {
+//     console.log('rendering inventory to the DOM');
   
-    let resultHistory = document.getElementById('resultHistory');
+//     let resultHistory = document.getElementById('resultHistory');
   
-    // empty the output element
-    resultHistory.innerHTML = '';
+//     // empty the output element
+//     resultHistory.innerHTML = '';
   
-    // loop through the calculations to display them
-    for (let item of calculations) {
-      // Append the item to the DOM
-      resultHistory.innerHTML += `
-            <li>
-              <p>${calculations.numOne} ${calculations.operator} ${calculations.numOne} = ${calculations.result}</p>
-            </li>`;
-    }
-  };
+//     // loop through the calculations to display them
+//     for (let item of calculations) {
+//       // Append the item to the DOM
+//       resultHistory.innerHTML += `
+//             <li>
+//               <p>${calculations.numOne} ${calculations.operator} ${calculations.numOne} = ${calculations.result}</p>
+//             </li>`;
+//     }
+//   };

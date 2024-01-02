@@ -22,57 +22,58 @@ let calculations = [
 
 // Here's a wonderful place to make some routes:
 
-// app.post('/calculations', (req, res) => {
-//   currentRound = req.body;
-//   console.log('current round on server side', currentRound);
-//   calculations.push(currentRound);
-//   res.sendStatus(201);
-// });
-
 app.post('/calculations', (req, res) => {
-  currentRound = req.body;
+  let currentRound = req.body;
   console.log('current round on server side', currentRound);
+  doMath();
   calculations.push(currentRound);
-  console.log('updated calculations', calculations);
-  //result = 1+2;
-  for (let inputs of currentRound){  
-    if (currentRound.operator == '+'){currentRound.result = currentRound.numOne+currentRound.numTwo}
-      else if (currentRound.operator == '-'){result = currentRound.numOne-currentRound.numTwo}
-      else if (currentRound.operator == '*'){result = currentRound.numOne*currentRound.numTwo}
-      else {result = currentRound.numOne%currentRound.numTwo}
-      console.log('result is', result);
-    }
-    console.log('result is', result);
-  calculations.result = result;
-  calculations.push(calculations.result);
+  console.log('in POST updated calculations', calculations);
   res.sendStatus(201);
 });
 
-// function checkMath (mathList){
-//   const newData = [];
-//   for (let inputs of mathList){  
-//     if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
-//       else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
-//       else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
-//       else if (calculations.operator === '/'){calculations.result = calculations.numOne/calculations.numTwo}
-//       //else {guesses.result = 'Too low'}
-//       newData.push(calculations.result);
-//   }
-//   console.log('new data', newData);
-// };
+// app.post('/calculations', (req, res) => {
+//   let currentRound = req.body;
+//   console.log('current round on server side', currentRound);
+//   calculations.push(currentRound);
+//   console.log('current round number one', currentRound.numTwo);
+//   // let currentOne = Number(currentRound.numOne)
+//   // let currentTwo = Number(currentRound.numTwo)
+//   //result = 2 + 7;
+//   //result = currentOne+currentTwo;
+//   // for (let inputs of currentRound){  
+//     // if (currentRound.operator == '+'){currentRound.result = currentRound.numOne+currentRound.numTwo}
+//     //   else if (currentRound.operator == '-'){result = currentRound.numOne-currentRound.numTwo}
+//     //   else if (currentRound.operator == '*'){result = currentRound.numOne*currentRound.numTwo}
+//     //   else {result = currentRound.numOne%currentRound.numTwo}
+//       //console.log('result is', result);
+//     //}
+//     console.log('result is', result);
+//   calculations.result = result;
+//   calculations.push(calculations.result);
+//   res.sendStatus(201);
+// });
+
+function doMath (mathList){
+  console.log('in doMath and current calculations list is', calculations);
+  console.log('numOne', calculations.numOne);
+  result = (calculations.numOne + calculations.numTwo);
+  //const newData = [];
+  // for (let inputs of mathList){  
+  //   if (calculations.operator === '+'){calculations.result = calculations.numOne+calculations.numTwo}
+  //     else if (calculations.operator === '-'){calculations.result = calculations.numOne-calculations.numTwo}
+  //     else if (calculations.operator === '*'){calculations.result = calculations.numOne*calculations.numTwo}
+  //     else if (calculations.operator === '/'){calculations.result = calculations.numOne/calculations.numTwo}
+  //     //else {guesses.result = 'Too low'}
+  //     newData.push(calculations.result);
+  // }
+  console.log('result', result);
+};
 
 app.get('/calculations', function(req, res){
   console.log('in GET on server');
-  //checkMath();
+  //doMath();
   res.send(calculations);
 });
-
-// app.post('/calculations', (req, res) => {
-//   console.log('in POST');
-//   calculations.push(newCalc);
-//   res.sendStatus(201);
-//   console.log('new calcuation list', calculations);
-// });
 
 //Express routes
 //app.use('/calculations', calculatorRouter);
