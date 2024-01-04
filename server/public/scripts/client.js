@@ -1,6 +1,6 @@
 const firstNum = document.querySelector('#firstNum');
 const secondNum = document.querySelector('#secondNum');
-const operator = document.querySelector('.operator-button');
+const operator = document.querySelector('.operator-btn');
 let resultCurrent = document.getElementById('recent-result');
 
 function onReady() {
@@ -17,11 +17,12 @@ function Calc(event){
     getCalculations();
 };
 
-// for (i of operator){
-//   i.addEventListerner('click', function(){
+//handling when operator button pressed
+// function handleOperator(event){
+//   operator = document.querySelector('#operator-btn');
+//   console.log('the operator is', operator);
+// };
 
-//   })
-// }
 //post inputs to server
 function postToServer(){
     console.log('in post to server');
@@ -29,7 +30,8 @@ function postToServer(){
         {
             numOne: Number(firstNum.value),
             numTwo: Number(secondNum.value),
-            operator: operator
+            operator: '+'
+            //operator: operator
         }
         ;
         console.log('current round', currentRound);

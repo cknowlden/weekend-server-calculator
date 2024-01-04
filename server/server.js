@@ -51,7 +51,7 @@ function doMath (mathList){
   //};
   let parseNumOne = parseInt(mathList.numOne);
   let parseNumTwo = parseInt(mathList.numTwo);
-  let operator = "-";
+  let operator = mathList.operator;
   console.log('numOne parseNumOne', parseNumOne);
   console.log('numTwo now parseNumTwo', parseNumTwo);
 switch (operator){
