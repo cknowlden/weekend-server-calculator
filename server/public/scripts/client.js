@@ -1,5 +1,6 @@
 const firstNum = document.querySelector('#firstNum');
 const secondNum = document.querySelector('#secondNum');
+const operator = document.querySelector('.operator-button');
 let resultCurrent = document.getElementById('recent-result');
 
 function onReady() {
@@ -16,6 +17,11 @@ function Calc(event){
     getCalculations();
 };
 
+// for (i of operator){
+//   i.addEventListerner('click', function(){
+
+//   })
+// }
 //post inputs to server
 function postToServer(){
     console.log('in post to server');
@@ -23,7 +29,7 @@ function postToServer(){
         {
             numOne: Number(firstNum.value),
             numTwo: Number(secondNum.value),
-            operator: '+'
+            operator: operator
         }
         ;
         console.log('current round', currentRound);
@@ -84,10 +90,16 @@ function renderRecent(calculations) {
   }
 };
 
-function clear(event){
-  event.preventDefault();
-  console.log('in clear event');
-  //resultCurrent.innerHTML = '';
-  document.getElementById("result-history").innerHTML = '';
-};
+// function clear(event){
+//   event.preventDefault();
+//   console.log('in clear event');
+//   resultCurrent.innerHTML = '';
+//   document.getElementById("result-history").innerHTML = '';
+// };
 
+//clear button functionality
+document.querySelector('.clear-btn').addEventListener('click', function(){
+  document.getElementById("results-area").innerHTML = '';
+  window.location.reload();
+  return false;
+});

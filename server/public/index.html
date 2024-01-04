@@ -12,16 +12,17 @@
 
     <form data-testid="calculator">
       <input placeholder="First Number" id= "firstNum" type="number"/>
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
+      <button class="operator-button">+</button>
+      <button class="operator-button">-</button>
+      <button class="operator-button">*</button>
+      <button class="operator-button">/</button>
       <input placeholder="Second Number" id= "secondNum" type="number"/>
       <button id="calculate-item" onclick="Calc(event)">=</button>
-      <button id="clear-event" onclick="clear(event)">C</button>
+      <button class="clear-btn">C</button>
  
     </form>
 
+    <section id="results-area">
     <section data-testid="recentResult">
       <!-- The most recent calculation result goes here. -->
       <p id="recent-result">
@@ -32,6 +33,7 @@
       <!-- The list of calculation results goes here. -->
       <ul id="result-history">
       </ul>
+    </section>
     </section>
   </body>
 </html>

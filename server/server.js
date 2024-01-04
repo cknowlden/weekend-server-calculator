@@ -43,12 +43,31 @@ app.post('/calculations', (req, res) => {
 function doMath (mathList){
   console.log('in doMath');
   //result = (mathList.numOne+mathList.numTwo)
-  if (mathList.operator == '+'){result = (mathList.numOne+mathList.numTwo)}
-  else if (mathList.operator == '-'){result = (mathList.numOne-mathList.numTwo)}
-  else if (mathList.operator == '*'){result = (mathList.numOne*mathList.numTwo)}
-  else {result = (mathList.numOne%mathList.numTwo)}
+  // if (mathList.operator == '+'){result = (mathList.numOne+mathList.numTwo)}
+  // else if (mathList.operator == '-'){result = (mathList.numOne-mathList.numTwo)}
+  // else if (mathList.operator == '*'){result = (mathList.numOne*mathList.numTwo)}
+  // else {result = (mathList.numOne%mathList.numTwo)}
 //console.log('result is', result);
-  };
+  //};
+  let parseNumOne = parseInt(mathList.numOne);
+  let parseNumTwo = parseInt(mathList.numTwo);
+  let operator = "-";
+  console.log('numOne parseNumOne', parseNumOne);
+  console.log('numTwo now parseNumTwo', parseNumTwo);
+switch (operator){
+  case "+":
+    result = (parseNumOne + parseNumTwo);
+    break;
+  case "-":
+    result = (parseNumOne - parseNumTwo);
+  case "*":
+    result = (parseNumOne * parseNumTwo);
+  case "&":
+    result = (parseNumOne - parseNumTwo);
+  default:
+    console.log("ERROR: no such operator");
+}
+};
 
 app.get('/calculations', function(req, res){
   console.log('in GET on server');
