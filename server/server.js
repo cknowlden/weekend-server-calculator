@@ -60,10 +60,13 @@ switch (operator){
     break;
   case "-":
     result = (parseNumOne - parseNumTwo);
+    break;
   case "*":
     result = (parseNumOne * parseNumTwo);
-  case "&":
-    result = (parseNumOne - parseNumTwo);
+    break;
+  case "/":
+    result = (parseNumOne / parseNumTwo);
+    break;
   default:
     console.log("ERROR: no such operator");
 }

@@ -1,6 +1,6 @@
 const firstNum = document.querySelector('#firstNum');
 const secondNum = document.querySelector('#secondNum');
-const operator = document.querySelector('.operator-btn');
+//const operator = document.querySelector('.operator-btn');
 let resultCurrent = document.getElementById('recent-result');
 
 function onReady() {
@@ -18,10 +18,11 @@ function Calc(event){
 };
 
 //handling when operator button pressed
-// function handleOperator(event){
-//   operator = document.querySelector('#operator-btn');
-//   console.log('the operator is', operator);
-// };
+function setOperator(event){
+  event.preventDefault();
+  let op = event.target.value;
+  operator = op;
+}
 
 //post inputs to server
 function postToServer(){
@@ -30,16 +31,16 @@ function postToServer(){
         {
             numOne: Number(firstNum.value),
             numTwo: Number(secondNum.value),
-            operator: '+'
-            //operator: operator
+            operator: operator
         }
         ;
         console.log('current round', currentRound);
         //console.log('numOne', currentRound.numOne);
         //let answer = (currentRound.numOne + currentRound.numTwo);
         //console.log('test addition', answer);
-    axios
-        .post('/calculations', currentRound)
+    //axios
+        //.post('/calculations', currentRound)
+        axios({url:'/calculations', method: 'POST', data: currentRound})
         .then((response) => {
             firstNum.value = '';
             secondNum.value = '';
@@ -79,17 +80,12 @@ function renderHistory(calculations) {
 };
 
 function renderRecent(calculations) {
-  console.log('rendering recent calculation', Number(calculations.result));
+  console.log('rendering recent calculation', calculations[calculations.length-1].result);
  
   resultCurrent.innerHTML = '';
-
-  // loop through the results to display them
-  for (let item of calculations) {
-    // Append the item to the DOM
-    resultCurrent.innerHTML =  `
-    <p>${item.result} </p>
-    `
-  }
+  resultCurrent.innerHTML =  `
+  <p>${calculations[calculations.length-1].result} </p>
+  `
 };
 
 // function clear(event){
